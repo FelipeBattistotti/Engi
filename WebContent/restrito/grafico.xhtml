@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<element>
+	<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:util="http://java.sun.com/jsf/composite/components/util"
+		xmlns:p="http://primefaces.org/ui">
+
+		<ui:composition template="/templates/principal.xhtml">
+
+			<ui:define name="titulo">ENGI</ui:define>
+
+			<ui:define name="corpo">
+				<h:form id="pesquisa">
+
+					<!-- PAINEL - GRÁFICO -->
+					<h:panelGrid columns="1" width="85%">
+						<!-- Atividades -->
+						<p:panel header="Painel" toggleable="true" toggleSpeed="900">
+
+							<p:chart type="bar" id="barChart" model="#{chartView.barModel}" style="height:300px"/>
+							
+							
+							
+							<p:chart type="bar" id="barChart2" model="#{chartView.barModel2}" rendered="#{chartView.includeChart}" style="height:300px"/>
+
+							<b>
+								<h:outputText value="#{chartView.dsInfo1}" />
+							</b>
+
+							<br />
+							
+							<b>
+								<h:outputText value="#{chartView.dsInfo2}" />
+							</b>
+
+							<br />
+							
+							<b>
+								<h:outputText value="#{chartView.dsPer1}" />
+							</b>
+							<h:outputText value="#{chartView.vlPer1}" />
+
+							<br />
+
+							<b>
+								<h:outputText value="#{chartView.dsPer2}" />
+							</b>
+							<h:outputText value="#{chartView.vlPer2}" />
+
+						</p:panel>
+					</h:panelGrid>
+
+				</h:form>
+			</ui:define>
+
+		</ui:composition>
+	</html>
+</element>

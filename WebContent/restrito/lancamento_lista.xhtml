@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<ui:composition>
+	<h:form id="listagem">
+		<h:messages />
+		<p:dataTable scrollable="false" style="height:200px" value="#{lancamentoBean.lista}" var="lancamento" rowIndexVar="index">
+			<p:column width="15">
+				<p:commandLink action="#{lancamentoBean.editar}" update="edicao">
+					<h:graphicImage library="imagens" name="editar16.png" />
+					<f:setPropertyActionListener target="#{lancamentoBean.editado}" value="#{lancamento}" />
+				</p:commandLink>
+			</p:column>
+			
+			<p:column width="15">
+				<p:commandLink action="#{lancamentoBean.excluir}" update="listagem"	onclick="if (!confirm('Confirma a exclusão do lançamento #{lancamento.descricao}?')) return false;">
+					<h:graphicImage library="imagens" name="excluir16.png" />
+					<f:setPropertyActionListener target="#{lancamentoBean.editado}" value="#{lancamento}" /> 
+				</p:commandLink>
+			</p:column>
+			
+			<p:column width="70">
+				<f:facet name="header">Data</f:facet>
+				<h:outputText value="#{lancamento.data}">
+					<f:convertDateTime dateStyle="medium"/>
+				</h:outputText>
+			</p:column>
+			
+			<p:column width="300">
+				<f:facet name="header">Descricao</f:facet>
+				<h:outputText value="#{lancamento.descricao}" />
+			</p:column>
+			
+			<p:column width="60">
+				<f:facet name="header">Valor</f:facet>
+				<h:outputText style="color: #{lancamento.categoria.fator gt 0 ? 'green' : 'red' }; text-align:right; display:block;" value="#{lancamento.valor}">
+					<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+				</h:outputText>
+			</p:column>
+			
+			<p:column width="60">
+				<f:facet name="header">Saldo</f:facet>
+				<h:outputText style="color: #{lancamentoBean.saldos[index] gt 0 ? 'green' : 'red' }; text-align:right; display:block;" value="#{lancamentoBean.saldos[index]}">
+					<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+				</h:outputText>
+			</p:column>
+			
+			<p:column width="40">
+				<f:facet name="header">Cheque</f:facet>
+				<h:outputText value="#{lancamento.cheque.chequeId.cheque}">
+				</h:outputText>
+			</p:column>
+			
+		</p:dataTable>
+	</h:form>
+</ui:composition>
+
+</html>

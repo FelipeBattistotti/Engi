@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"> 
+
+<ui:composition>
+	<h:form id="edicao">
+		<h:messages />
+		<h:inputHidden value="#{lancamentoBean.editado.codigo}" />
+		
+		<h:panelGrid columns="5">
+			<h:outputLabel value="Data" for="data" />
+			<h:outputLabel value="Categoria" for="categoria" />
+			<h:outputLabel value="Descrição" for="descricao" />
+			<h:outputLabel value="Valor" for="valor" />
+			<h:outputLabel value="Cheque" for="numeroCheque" />
+			
+			<p:calendar id="data" value="#{lancamentoBean.editado.data}" pattern="dd/MM/yyyy" />
+			
+			<h:selectOneMenu value="#{lancamentoBean.editado.categoria}" id="categoria">
+				<f:selectItems value="#{categoriaBean.categoriasSelect}"/>
+			</h:selectOneMenu>
+			
+			<h:inputText value="#{lancamentoBean.editado.descricao}" id="descricao" required="true" size="30"/>
+			
+			<h:inputText value="#{lancamentoBean.editado.valor}" id="valor" size="10">
+				<f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+			</h:inputText>
+			
+			<h:inputText value="#{lancamentoBean.numeroCheque}" id="numeroCheque" maxlength="6" size="6" valueChangeListener="#{lancamentoBean.mudouCheque}" />
+			
+		</h:panelGrid>
+		
+		<p:commandButton value="Novo" action="#{lancamentoBean.novo}" process="@this" update="edicao" />
+		
+		<p:commandButton value="Salvar" action="#{lancamentoBean.salvar}" update="listagem, edicao" />		
+	</h:form>
+</ui:composition>
+ 
+</html>

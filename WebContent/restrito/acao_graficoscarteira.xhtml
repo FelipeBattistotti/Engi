@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<ui:composition>
+	<h:panelGrid width="100%">
+		<h:form id="graficosCarteira">
+			<h:panelGrid columns="2" width="100%">
+				<p:panel header="Composição carteira em % de quantidade"
+					toggleable="true" toggleSpeed="500">
+					<p:pieChart value="#{acaoBean.lista}" var="acaoVirtual"
+						categoryField="#{acaoVirtual.acao.sigla}"
+						dataField="#{acaoVirtual.acao.quantidade}" width="300px"
+						height="260px" style="estiloGrafico" />
+				</p:panel>
+				<p:panel header="Composição carteira em % de valor"
+					toggleable="true" toggleSpeed="500" style="margin-left:+10px;">
+					<p:pieChart value="#{acaoBean.lista}" var="acaoVirtual"
+						categoryField="#{acaoVirtual.acao.sigla}"
+						dataField="#{acaoVirtual.total}" width="300px" height="260px"
+						style="estiloGrafico" />
+				</p:panel>
+			</h:panelGrid>
+		</h:form>
+	</h:panelGrid>
+</ui:composition>
+</html>

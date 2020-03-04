@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:util="http://java.sun.com/jsf/composite/components/util"
+	  xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<ui:composition template="/templates/principal.xhtml">
+	
+	<ui:define name="titulo">
+	ENGI
+	</ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="chamados">
+			
+			<!-- PAINEIS 1 -->
+			<h:panelGrid columns="1" width="100%">
+			   <!-- Chamados -->
+		       <p:panel header="Chamados" toggleable="true" toggleSpeed="900">
+		       		<p:dataTable id="chamadosDataTable" style="height:200px" value="#{pesquisaBean.chamados}" var="chamado" paginator="true" rows="2" rowIndexVar="index">
+		       			
+		       			<p:column width="150">
+							<f:facet name="header">Código</f:facet>
+							<h:outputText value="#{chamado.codigoChamado}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="250">
+							<f:facet name="header">Analista Identificador</f:facet>
+							<h:outputText value="#{chamado.analistaIdentificador}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="500">
+							<f:facet name="header">Erro</f:facet>
+							<h:outputText value="#{chamado.erro}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="210">
+							<f:facet name="header">Cliente</f:facet>
+							<h:outputText value="#{chamado.cliente.nomeCliente}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="40">
+							<f:facet name="header">#</f:facet>
+							<h:commandLink action="#{pesquisaBean.walkthroughsChamado}" >
+								<h:graphicImage library="imagens" name="footprint.png" style="border:0"/>
+								<f:setPropertyActionListener value="#{chamado}" target="#{pesquisaBean.selectedChamado}" />
+							</h:commandLink>
+						</p:column>
+						
+		       		</p:dataTable>
+		       </p:panel>
+		    </h:panelGrid>
+		    <br/>
+		    <!-- PAINEIS 2 -->
+		    <h:panelGrid columns="4" width="100%">
+		    	<!-- Atividades -->
+		    	<p:panel header="Atividades" toggleable="true" toggleSpeed="900">
+		    		<p:dataTable id="atividade1DataTable" style="height:200px" value="#{pesquisaBean.atividades1}" var="atividade1" paginator="true" rows="2" rowIndexVar="index">
+						
+						<p:column width="40">
+							<f:facet name="header">Código</f:facet>
+							<h:outputText value="#{atividade1.codigo}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="70">
+							<f:facet name="header">Tipo</f:facet>
+							<h:outputText value="#{atividade1.tipo}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="200">
+							<f:facet name="header">Projeto</f:facet>
+							<h:outputText value="#{atividade1.codigoProjeto}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="150">
+							<f:facet name="header">Pessoa</f:facet>
+							<h:outputText value="#{atividade1.nomeUsuario}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="20">
+							<f:facet name="header">#</f:facet>
+							<h:commandLink action="#{pesquisaBean.detalhaAtividade}" >
+								<h:graphicImage library="imagens" name="glass.png" style="border:0"/>
+								<f:setPropertyActionListener value="#{atividade1}" target="#{pesquisaBean.selectedAtividadeVO}" />
+							</h:commandLink>
+						</p:column>
+						
+					</p:dataTable>
+		    	</p:panel>
+		    	<!-- Sugestões -->
+		    	<p:panel header="Sugestões" toggleable="true" toggleSpeed="900" style="margin-left:+10px;">
+		    		<p:dataTable id="atividade2DataTable" style="height:200px" value="#{pesquisaBean.atividades2}" var="atividade2" paginator="true" rows="2" rowIndexVar="index">
+						
+						<p:column width="40">
+							<f:facet name="header">Código</f:facet>
+							<h:outputText value="#{atividade2.codigo}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="70">
+							<f:facet name="header">Tipo</f:facet>
+							<h:outputText value="#{atividade2.tipo}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="200">
+							<f:facet name="header">Projeto</f:facet>
+							<h:outputText value="#{atividade2.codigoProjeto}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="150">
+							<f:facet name="header">Pessoa</f:facet>
+							<h:outputText value="#{atividade2.nomeUsuario}">
+							</h:outputText>
+						</p:column>
+						
+						<p:column width="20">
+							<f:facet name="header">#</f:facet>
+							<h:commandLink action="#{pesquisaBean.detalhaAtividade}" >
+								<h:graphicImage library="imagens" name="glass.png" style="border:0"/>
+								<f:setPropertyActionListener value="#{atividade2}" target="#{pesquisaBean.selectedAtividadeVO}" />
+							</h:commandLink>
+						</p:column>
+						
+					</p:dataTable>
+		    	</p:panel>
+		    </h:panelGrid>
+		    
+		    <!-- PAINEIS 3 -->
+		    <h:panelGrid columns="1" width="100%">
+		    	<!-- Atividades -->
+		    	<p:panel header="Detalhe" toggleable="true" toggleSpeed="900">
+		    		
+		    		<b><h:outputText value="Tipo Atividade: "/></b>
+                	<h:outputText value="#{pesquisaBean.atividadeDetalhe.tipo}"/>
+                	
+                	<br/>
+                	
+		    		<b><h:outputText value="Projeto: "/></b>
+                	<h:outputText value="#{pesquisaBean.atividadeDetalhe.codigoProjeto}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Pessoa: "/></b>
+                	<h:outputText value="#{pesquisaBean.atividadeDetalhe.usuario.nome}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Função: "/></b>
+                	<h:outputText value="#{pesquisaBean.funcao}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Ação: "/></b>
+                	<h:outputText value="#{pesquisaBean.acao}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Documento Engenharia: "/></b>
+                	<h:outputText value="#{pesquisaBean.atividadeDetalhe.docEngenharia.titulo}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Link TDN: "/></b>
+                	<h:outputText value="#{pesquisaBean.atividadeDetalhe.docEngenharia.linkTDN}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Documento Orçamento: "/></b>
+                	<h:outputText value="#{pesquisaBean.atividadeDetalhe.docOrcamento.titulo}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Link TDN: "/></b>
+                	<h:outputText value="#{pesquisaBean.atividadeDetalhe.docOrcamento.linkTDN}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Código Fonte: "/></b>
+                	<h:outputText value="#{pesquisaBean.codigoFonte.nomeCodigoFonte}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Tabela: "/></b>
+                	<h:outputText value="#{pesquisaBean.tabela.nomeTabela}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Release: "/></b>
+                	<h:outputText value="#{pesquisaBean.atividadeDetalhe.midia.descricao}"/>
+                	
+                	<br/>
+                	
+                	<b><h:outputText value="Sugestão: "/></b>
+                	<h:outputText value="#{pesquisaBean.atividadeDetalhe.sugestao}"/>
+                	
+		    	</p:panel>
+		    </h:panelGrid>
+		    
+	    </h:form>
+	</ui:define>
+	
+</ui:composition>
+</html>

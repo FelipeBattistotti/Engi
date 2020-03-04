@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="">
+  <!-- Configuração da conexão com o banco MySQL e dialeto 
+		-->
+  <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
+  <!-- Configuração da conexão com o banco Postgres e dialeto 
+  <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		-->
+  <property name="connection.datasource">java:/comp/env/jdbc/FinanceiroDB</property>
+  <property name="hbm2ddl.auto">update</property>
+  <property name="hibernate.show_sql">true</property>
+  <property name="hibernate.format_sql">true</property>
+  <property name="hibernate.generate_statistics">true</property>
+  <property name="hibernate.c3p0.min_size">5</property>
+  <property name="hibernate.c3p0.max_size">20</property>
+  <property name="hibernate.c3p0.timeout">300</property>
+  <property name="hibernate.c3p0.max_statements">50</property>
+  <property name="current_session_context_class">thread</property>
+  
+  <mapping class="br.com.engi.model.Usuario"/>
+  <mapping class="br.com.engi.model.FatoFaturaContrat"/>
+  <mapping class="br.com.engi.model.FatoMovInsuPrestador"/>
+  <mapping class="br.com.engi.model.FatoMoviprocPrestador"/>
+  <mapping class="br.com.engi.model.FatoVlbenefFatura"/>
+  <mapping class="br.com.engi.model.Chart"/>
+ </session-factory>
+</hibernate-configuration>

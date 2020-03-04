@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true">
+
+<Resource name="jdbc/FinanceiroDB" 
+		  auth="Container" 
+		  type="javax.sql.DataSource"
+		  maxActive="100" 
+		  maxIdle="30" 
+		  maxWait="10000"
+		  driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		  url="jdbc:sqlserver://localhost:1433;databaseName=dbProjBI;user=admin;password=admin;"/>
+
+<!-- <Resource	name="jdbc/FinanceiroDB" 
+			auth="Container" 
+			type="javax.sql.DataSource"
+			maxActive="100" 
+			maxIdle="30" 
+			maxWait="10000"
+			username="postgres" 
+			password="" 
+			driverClassName="org.postgresql.Driver"
+			url="jdbc:postgresql://localhost:5432/engi?autoReconnect=true"/>--> 
+
+</Context>

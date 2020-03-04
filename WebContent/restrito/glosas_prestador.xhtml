@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<element>
+	<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:util="http://java.sun.com/jsf/composite/components/util"
+		xmlns:p="http://primefaces.org/ui">
+
+		<ui:composition template="/templates/principal.xhtml">
+
+			<ui:define name="titulo">ENGI</ui:define>
+
+			<ui:define name="corpo">
+				<h:form id="pesquisa">
+
+					<!-- SEARCH -->
+					<h:panelGrid columns="3">
+						<h:outputLabel value="Nome Prestador: " />
+						<h:inputText value="#{glosasPrestadorBean.nomePrestador}" 
+						             id="nomePrestador" required="true" style="width : 670px; height : 20px;" />
+						<p:commandButton value="Consultar" action="#{glosasPrestadorBean.findFatoMoviProcMovInsuPrestador}"  update="pesquisa" />
+					</h:panelGrid>
+
+					<br />
+
+					<!-- PERIODO 1 E 2 -->
+					<h:panelGrid columns="3">
+						<h:outputLabel value="Período Ref. Inicial" for="data1" />
+						<h:outputLabel value="        " />
+						<h:outputLabel value="Período Ref. Final" for="data2" />
+
+						<p:calendar id="data1" value="#{glosasPrestadorBean.selectedPeriodo1}" pattern="dd/MM/yyyy" />
+
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+						<p:calendar id="data2" value="#{glosasPrestadorBean.selectedPeriodo2}" pattern="dd/MM/yyyy" />
+					</h:panelGrid>
+
+					<br />
+
+					<!-- PAINEL - MENSAGEM -->
+					<h:panelGrid columns="1" width="80%">
+						<!-- Atividades -->
+						<p:panel header="Painel" toggleable="true" toggleSpeed="900">
+
+							<b>
+								<h:outputText value="#{glosasPrestadorBean.mensagem}" />
+							</b>
+
+						</p:panel>
+					</h:panelGrid>
+
+				</h:form>
+			</ui:define>
+
+		</ui:composition>
+	</html>
+</element>
